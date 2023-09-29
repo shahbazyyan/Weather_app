@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import  '../WeatherApp/WeatherApp.css';
 import clear from './img/clear.png';
 import cloud from './img/cloud.png';
@@ -12,6 +12,7 @@ import search_icon from './img/search.png';
 const WeatherApp = () => {
 
     let apiKey = `d1088573ac88f21d423eaebe31a56664`;
+    const [icon, setIcon] = useState(clear);
 
   async function  search (selector) {
              const elem = document.getElementsByClassName(selector);
@@ -23,16 +24,47 @@ const WeatherApp = () => {
              
              let res = await fetch(url);
              let data = await res.json();
+           
              const humidityElem = document.getElementsByClassName("humidity_percent");
              const windElem = document.getElementsByClassName("wind_km");
              const tempElem = document.getElementsByClassName("temp");
              const locationElem = document.getElementsByClassName("location");
 
-             humidityElem[0].innerHTML = Math.floor(data.main.humidity) + "%";
-             windElem[0].innerHTML = Math.floor(data.wind.speed) + " km/h";
-             tempElem[0].innerHTML = Math.floor(data.main.temp) + "°C";
-             locationElem[0].innerHTML = data.name;
+             if (data.ok === false) {
+                alert("Something is worng!")
+             } else {
+                humidityElem[0].innerHTML = Math.floor(data.main.humidity) + "%";
+                windElem[0].innerHTML = Math.floor(data.wind.speed) + " km/h";
+                tempElem[0].innerHTML = Math.floor(data.main.temp) + "°C";
+                locationElem[0].innerHTML = data.name;
+
+                if (data.weather[0].icon === "01d" || data.weather[0].icon === "01n") {
+                    setIcon(clear);
+                } else if (data.weather[0].icon === "02d" || data.weather[0].icon === "02n") {
+                    setIcon(cloud);
+                } else if (data.weather[0].icon === "03d" || data.weather[0].icon === "03n") {
+                    setIcon(drizzle);
+                } else if (data.weather[0].icon === "04d" || data.weather[0].icon === "04n") {
+                    setIcon(drizzle);
+                } else if (data.weather[0].icon === "09d" || data.weather[0].icon === "09n") {
+                    setIcon(rain);
+                } else if (data.weather[0].icon === "10d" || data.weather[0].icon === "10n") {
+                    setIcon(rain);
+                } else if (data.weather[0].icon === "13d" || data.weather[0].icon === "13n") {
+                    setIcon(snow);
+                } else {
+                    setIcon(clear);
+                }
+             }
+        
+
+           
              
+             
+          
+            
+
+
     }
     
 
@@ -47,7 +79,7 @@ const WeatherApp = () => {
                </div>
             </div>
             <div className="weather_icon">
-                <img src={cloud} alt="cloud"/>
+                <img src={icon} alt="cloud"/>
             </div>
             <div className="temp">22°C</div>
             <div className="location">Yerevan</div>

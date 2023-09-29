@@ -1,15 +1,16 @@
 body {
     background-color: yellowgreen;
+    background-image: url(img/bg.avif);
 }
 
 .container {
     width: 410px;
     height: 530px;
     margin: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
     border-radius: 15px;
-    background-image: linear-gradient(180deg, #1c0b6e 0%, #180674 100%);
+    background-image: linear-gradient(180deg, #250ba7 0%, #3a25a3 100%);
+    opacity: 80%;
 }
 
 .top_bar {
