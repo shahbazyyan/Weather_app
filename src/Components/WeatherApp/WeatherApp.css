@@ -1,17 +1,32 @@
 body {
-    background-color: yellowgreen;
-    background-image: url(img/bg.avif);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,109,1) 35%, rgba(0,212,255,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: 0; 
+    overflow: hidden;
+}
+
+.main p{
+  color: antiquewhite;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
 }
 
 .container {
     width: 410px;
     height: 530px;
-    margin: auto;
-    margin-top: 20px;
     border-radius: 15px;
-    background-image: linear-gradient(180deg, #250ba7 0%, #3a25a3 100%);
-    opacity: 80%;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%,  rgba(0,212,255,1) 100%);
+    opacity: 0.8; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
 }
+
 
 .top_bar {
     display: flex;
@@ -53,15 +68,17 @@ body {
 
 .temp {
     font-size: 24px;
+    color: #fff;
 }
 
 .location {
     font-size: 28px;
+    color: #fff;
 }
 
 .data_container {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    gap: 80px;
+    color: #fff;
     margin-top: 30px;
 }
