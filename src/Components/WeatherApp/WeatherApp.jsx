@@ -8,6 +8,7 @@ import drizzle from './img/drizzle.png';
 import humidity from './img/humidity.png';
 import wind from './img/wind.png';
 import search_icon from './img/search.png';
+import AtomsAnimation from "../../Particles/Animation";
 
 const WeatherApp = () => {
 
@@ -69,6 +70,7 @@ const WeatherApp = () => {
 
     return (
         <div className="main">
+            <AtomsAnimation/>
            <p>Check Real Time Weather Around The Word</p> 
             <div className="container">
                 <div className="top_bar">
